@@ -1,0 +1,30 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="~/master/sesion-docente.master" CodeFile="base.master.cs" Inherits="mpFormBase" %>
+
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="Cabecera" runat="server">
+<div class="div-encabezado cg-encabezado" style="background-color: #344B27"><img src="<%= "" + sgwNucleo.Funciones.URLBase() %>coneauglobal/recursos/imagenes/aplicaciones/iconos/curriculum/icono-64.png" /><asp:ContentPlaceHolder ID="Cabecera" runat="server"></asp:ContentPlaceHolder></div>
+</asp:Content>
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="server">
+    <li><a href="default.aspx">Inicio</a></li>
+    <li><a href="configuracion.aspx">Configuración</a></li>
+    <li><a href="vinculacion-historia.aspx">Vinculaciones históricas</a></li>
+    <li><a href="/coneauglobal/ayuda/?sistema=curriculum" target="_blank">Ayuda</a></li>
+    <asp:ContentPlaceHolder ID="Menu" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+
+
+<asp:Content ID="Content5" ContentPlaceHolderID="Contenido" runat="server">
+    <div style="padding: 6px">
+    <asp:ContentPlaceHolder ID="Contenido" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</asp:Content>
+
+
+
+<asp:Content ID="Content4" ContentPlaceHolderID="Popup" runat="server">
+    <asp:ContentPlaceHolder ID="Popup" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="sesion-docente.master.cs" MasterPageFile="~/master/sesion.master" Inherits="mpCentral" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="SinFormAntes" runat="server">
+    <asp:ContentPlaceHolder ID="SinFormAntes" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Cabecera" runat="server">
+    <asp:ContentPlaceHolder ID="Cabecera" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="Menu" runat="server">
+    <asp:ContentPlaceHolder ID="Menu" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content8" ContentPlaceHolderID="Lateral" runat="server">
+    <asp:ContentPlaceHolder ID="Lateral" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="SinAjaxAntes" runat="server">
+    <asp:ContentPlaceHolder ID="SinAjaxAntes" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content5" ContentPlaceHolderID="Contenido" runat="server">
+    <asp:ContentPlaceHolder ID="Contenido" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content9" ContentPlaceHolderID="Popup" runat="server">
+    <asp:ContentPlaceHolder ID="Popup" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content6" ContentPlaceHolderID="SinAjaxDespues" runat="server">
+    <asp:ContentPlaceHolder ID="SinAjaxDespues" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content7" ContentPlaceHolderID="SinFormDespues" runat="server">
+    <asp:ContentPlaceHolder ID="SinFormDespues" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+

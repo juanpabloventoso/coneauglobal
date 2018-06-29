@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="sesion.master.cs" MasterPageFile="~/master/base.master" Inherits="mpSesion" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="SinFormAntes" runat="server">
+    <asp:ContentPlaceHolder ID="SinFormAntes" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content6" ContentPlaceHolderID="Cabecera" runat="server">
+    <% if (sistemaID != 0) { %>
+    <script type="text/javascript">
+        sgwSistemaID = <%= sistemaID %>;
+        sgwSistemaNombre = "<%= sistemaNombre %>";
+        sgwSistemaSubnombre = "<%= sistemaSubnombre %>";
+        sgwSistemaDesc = "<%= sistemaDesc %>";
+        sgwSistemaCodename = "<%= sistemaCodename %>";
+    </script>
+    <% } %>
+    <asp:ContentPlaceHolder ID="Cabecera" runat="server"></asp:ContentPlaceHolder>
+    <% if (sgwNucleo.Usuarios.EsPersonal()) { %>
+    <% if (esFavorito) { %>
+    <a class="a-favorito a-favorito-agregado" onclick="sgwEliminarFavorito(<%= idFavorito %>)" title="Eliminar de mi escritorio"></a>
+    <% } else { %>
+    <a class="a-favorito" onclick="sgwMostrarAgregarFavorito()" title="Agregar a mi escritorio"></a>
+    <% } %>
+    <% } %>
+    <div class="div-menu-holder">
+        <ul class="menu">
+        <asp:ContentPlaceHolder ID="Menu" runat="server"></asp:ContentPlaceHolder>
+            <li class="menur"><a><%= Session["UsuarioDescripcion"] %></a>
+                <ul>
+                    <li><a href="/coneauglobal/inicio/">Inicio</a></li>
+                    <li><a href="<%= "" + sgwNucleo.Funciones.URLBase() %>coneauglobal/usuarios/perfil/">Mi cuenta</a></li>
+                    <li class="separator" />
+                    <li><a href="<%= "" + sgwNucleo.Funciones.URLBase() %>coneauglobal/cerrar-sesion/">Cerrar sesión</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>                
+</asp:Content>
+
+<asp:Content ID="Content7" ContentPlaceHolderID="Lateral" runat="server">
+    <asp:ContentPlaceHolder ID="Lateral" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="SinAjaxAntes" runat="server">
+    <asp:ContentPlaceHolder ID="SinAjaxAntes" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="Contenido" runat="server">
+    <asp:ContentPlaceHolder ID="Contenido" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content8" ContentPlaceHolderID="Popup" runat="server">
+    <asp:ContentPlaceHolder ID="Popup" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="SinAjaxDespues" runat="server">
+    <asp:ContentPlaceHolder ID="SinAjaxDespues" runat="server"></asp:ContentPlaceHolder>
+    <div id="divFavorito">
+        <h3>Agregar a mi escritorio</h3>
+        <br />
+        <span>Nombre: </span><input type="text" id="txtFavoritoTitulo" />
+        <br />
+        <br />
+        <span>Descripción: </span><input type="text" id="txtFavoritoDesc" />
+        <br />
+        <br />
+        <a id="aFavoritoMas" onclick="sgwMostrarFavoritoMas()">Mas opciones...</a>
+        <div id="divFavoritoMas">
+        <span>URL: </span><input type="text" id="txtFavoritoURL" />
+        <br />
+        <br />
+        <span>Ícono (URL): </span><input type="text" id="txtFavoritoIcono" />
+        <br />
+        <br />
+        </div>
+        <a onclick="sgwAgregarFavorito()" class="boton boton-verde">Agregar</a>
+    </div>
+</asp:Content>
+
+<asp:Content ID="Content5" ContentPlaceHolderID="SinFormDespues" runat="server">
+    <asp:ContentPlaceHolder ID="SinFormDespues" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+

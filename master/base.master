@@ -1,0 +1,108 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="base.master.cs" Inherits="mpBase" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register assembly="DevExpress.Web.v12.2, Version=12.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dxwgv" %>
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="shortcut icon" href="~/recursos/imagenes/iconos/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="~/recursos/imagenes/iconos/favicon.ico" type="image/x-icon" />
+    <link href="~/recursos/css/base.css?v=3" rel="stylesheet" type="text/css" media="screen" />
+    <script type="text/javascript">if ((window.innerWidth || document.documentElement.clientWidth) > 767)
+    document.write('<link href="~/recursos/css/fuentes.css" rel="stylesheet" media="screen" type="text/css" />');</script>
+    <link href="~/recursos/css/imprimir.css" rel="stylesheet" type="text/css" media="print" />
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="Encabezado" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+
+	<asp:ContentPlaceHolder ID="SinFormAntes" runat="server"></asp:ContentPlaceHolder>
+
+    <form id="frmBase" runat="server">
+    	<asp:ContentPlaceHolder ID="SinJavaAntes" runat="server"></asp:ContentPlaceHolder>
+		<script src="<%= "" + sgwNucleo.Funciones.URLBase() %>coneauglobal/recursos/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
+        <script src="<%= "" + sgwNucleo.Funciones.URLBase() %>coneauglobal/recursos/js/datepicker.js" type="text/javascript"></script>
+		<script src="<%= "" + sgwNucleo.Funciones.URLBase() %>coneauglobal/recursos/js/sgwNucleo.js?v=3" type="text/javascript"></script>
+        <script type="text/javascript">sgwURLActual = "<%= urlActual %>";</script>
+
+        <div class="div-cabecera">
+		<asp:ContentPlaceHolder ID="Cabecera" runat="server"></asp:ContentPlaceHolder>
+        </div>
+        <div class="div-cabecera-spacer"></div>
+
+        <div class="div-contenido-bg">
+		<asp:ContentPlaceHolder ID="SinAjaxAntes" runat="server"></asp:ContentPlaceHolder>
+
+        <asp:ToolkitScriptManager ID="smGlobal" runat="server" LoadScriptsBeforeUI="false" ScriptMode="Release" CombineScripts="true" AsyncPostBackTimeout="600"    
+            OnAsyncPostBackError="ToolkitScriptManager1_AsyncPostBackError" />
+        <asp:UpdatePanel ID="updpnlBase" runat="server">
+            <ContentTemplate>
+
+				<div id="pnlEstadoAJAXContenedor" class="divEstadoAJAXContenedor" style="display: none">
+					<asp:Panel ID="pnlEstadoAJAX" runat="server" CssClass="divEstadoAJAX" BackColor="#FFE0A0">
+						<asp:Label ID="lblEstadoAJAX" runat="server" Text=""></asp:Label>
+						<asp:Literal ID="lblEstadoAJAXError" runat="server" Text="<a id='lblEstadoAJAXError' style='color: white; text-decoration: underline' href='/coneauglobal/mainframe/application/exception.aspx' target='_blank'>Mas información</a>"></asp:Literal>
+					</asp:Panel>
+				</div>
+					
+				<asp:UpdateProgress ID="updpgBase" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="updpnlBase">
+					<ProgressTemplate>
+                        <div class="divEstadoAJAXBg"></div>
+						<div class="divEstadoAJAXContenedor"><div class="divEstadoAJAX">Cargando...</div></div>
+					</ProgressTemplate>
+				</asp:UpdateProgress>
+
+            <div class="div-contenido">
+
+            <div class="div-lateral">
+		    <asp:ContentPlaceHolder ID="Lateral" runat="server"></asp:ContentPlaceHolder>
+            </div>
+
+            <asp:ContentPlaceHolder ID="Contenido" runat="server"></asp:ContentPlaceHolder>
+
+            </div>
+
+            <asp:ContentPlaceHolder ID="Popup" runat="server"></asp:ContentPlaceHolder>
+
+            <dxwgv:ASPxGridViewExporter ID="grdExportar" runat="server" GridViewID="grdConsulta" />
+                
+            </ContentTemplate>
+                
+        </asp:UpdatePanel>
+			
+		<asp:ContentPlaceHolder ID="SinAjaxDespues" runat="server"></asp:ContentPlaceHolder>
+
+            
+        </div>                
+
+        <asp:HiddenField ID="hfScroll" runat="server" />
+
+    </form>
+	<asp:ContentPlaceHolder ID="SinFormDespues" runat="server"></asp:ContentPlaceHolder>
+<script type="text/javascript">
+    function guardarScroll() { document.getElementById('<%= hfScroll.ClientID %>').value = $('.div-contenido')[0].scrollTop; }
+    function restaurarScroll() { $('.div-contenido')[0].scrollTop = document.getElementById('<%= hfScroll.ClientID %>').value; }
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequest);
+    function EndRequest(sender, args) { restaurarScroll(); }
+    function pageLoad() {
+        $(".div-contenido").scroll(function () { guardarScroll(); });
+        sgwEstadoAJAX("<%=lblEstadoAJAX.ClientID%>", "<%=pnlEstadoAJAX.ClientID%>");
+        sgwNucleoIniciar();
+    }
+    $(".div-cabecera-spacer").height($(".div-cabecera").height());
+    <% if (!sgwNucleo.Funciones.EjecucionDesdeIDE()) { %>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-40822241-1', '<%= "" + sgwNucleo.Funciones.DominioBase() %>');
+    ga('send', 'pageview');
+    <% } %>
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="~/master/sesion-docente.master" CodeFile="abm.master.cs" Inherits="formABM" %>
+
+<%@ Register Assembly="DevExpress.Web.v12.2, Version=12.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxNavBar" TagPrefix="dxnb" %>
+
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Cabecera" runat="server">
+<div class="div-encabezado cg-encabezado" style="background-color: #344B27"><img src="<%= "" + sgwNucleo.Funciones.URLBase() %>coneauglobal/recursos/imagenes/aplicaciones/iconos/curriculum/icono-64.png" /><asp:Literal ID="lblAteneaTitulo" runat="server"></asp:Literal></div>
+</asp:Content>
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="server">
+    <% if (sgwNucleo.Usuarios.EsDocente()) { %><li><a href="/coneauglobal/docentes/curriculum/">Inicio</a></li><% } %>
+    <li><a>Imprimir</a>
+    <ul>
+        <li><a href="" onclick="javascript:window.print()">Imprimir página</a></li>
+        <li><a href="imprimir.aspx" target="_blank">Imprimir todo</a></li>
+    </ul>
+    </li>
+    <li><a href="/coneauglobal/ayuda/?sistema=curriculum" target="_blank">Ayuda</a></li>
+</asp:Content>
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="Lateral" runat="server">
+    <style>
+    .div-titulo-popup-violeta {
+        font-weight: normal;
+        background: #d8e8f1;
+        padding: 6px 10px;
+        margin-left: 40px;
+        color: #459;
+        font-size: 13px;
+        border-radius: 4px;
+    }
+    .div-form-abm {
+        padding: 0;
+        border: 0;
+        background: none;
+        box-shadow: none;
+        min-height: 98px;
+    }
+    .div-form-abm-grilla {
+        margin-right: 64px;
+    }
+    .div-abm-botonera-derecha {
+        display: none;
+    }
+    </style>
+    <div id="navCurriculum" class="nav-cabecera" data-url="curriculum">
+        <span>Currículum</span>
+        <div>
+            <asp:LinkButton runat="server" ID="lnkPunto1" OnClick="lnkPuntos_Click" data-url="abm-p1.aspx" Text="1. Datos personales" />
+            <asp:LinkButton runat="server" ID="lnkPunto2" OnClick="lnkPuntos_Click" data-url="abm-p2.aspx" Text="2. Formación" />
+            <asp:LinkButton runat="server" ID="lnkPunto3" OnClick="lnkPuntos_Click" data-url="abm-p3.aspx" Text="3. Área de desempeño" />
+            <asp:LinkButton runat="server" ID="lnkPunto4" OnClick="lnkPuntos_Click" data-url="abm-p4.aspx" Text="4. Docencia universitaria" />
+            <asp:LinkButton runat="server" ID="lnkPunto5" OnClick="lnkPuntos_Click" data-url="abm-p5.aspx" Text="5. Gestión académica" />
+            <asp:LinkButton runat="server" ID="lnkPunto6" OnClick="lnkPuntos_Click" data-url="abm-p6.aspx" Text="6. Desempeño no académico" />
+            <asp:LinkButton runat="server" ID="lnkPunto7" OnClick="lnkPuntos_Click" data-url="abm-p7.aspx" Text="7. Investigación" />
+            <asp:LinkButton runat="server" ID="lnkPunto8" OnClick="lnkPuntos_Click" data-url="abm-p8.aspx" Text="8. Reuniones científicas" />
+            <asp:LinkButton runat="server" ID="lnkPunto9" OnClick="lnkPuntos_Click" data-url="abm-p9.aspx" Text="9. Comités y jurados" />
+            <asp:LinkButton runat="server" ID="lnkPunto10" OnClick="lnkPuntos_Click" data-url="abm-p10.aspx" Text="10. Otra información" />
+        </div>
+    </div>
+</asp:Content>
+
+
+<asp:Content ID="Content5" ContentPlaceHolderID="Contenido" runat="server">
+
+<div class="div-full-contenido">
+    <asp:ContentPlaceHolder ID="Central" runat="server"></asp:ContentPlaceHolder>
+</div>
+    
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="Popup" runat="server">
+
+    <asp:ContentPlaceHolder ID="Popup" runat="server"></asp:ContentPlaceHolder>
+    
+</asp:Content>

@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="central.master.cs" MasterPageFile="~/master/base.master" Inherits="mpCentral" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="SinFormAntes" runat="server">
+    <asp:ContentPlaceHolder ID="SinFormAntes" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content6" ContentPlaceHolderID="Cabecera" runat="server">
+    <asp:ContentPlaceHolder ID="Cabecera" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content7" ContentPlaceHolderID="Lateral" runat="server">
+    <asp:ContentPlaceHolder ID="Lateral" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="SinAjaxAntes" runat="server">
+    <asp:ContentPlaceHolder ID="SinAjaxAntes" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="Contenido" runat="server">
+<div class="div-central">
+    <div class="div-central-cont">
+    <asp:ContentPlaceHolder ID="Contenido" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</div>
+<div class="footer-central">
+<div class="footer-central-cont">
+    <div class="footer-central-izq">
+        <a href="/coneauglobal/ayuda/" target="_blank">Ayuda y soporte técnico</a>
+    </div>
+    <div class="footer-central-der">
+        <a href="/coneauglobal/legales/terminos-condiciones/" target="_blank">Términos y condiciones</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/coneauglobal/legales/politica-de-privacidad/" target="_blank">Política de privacidad</a>
+    </div>
+    <div class="clear"></div>
+</div>
+</div>
+</asp:Content>
+
+<asp:Content ID="Content8" ContentPlaceHolderID="Popup" runat="server">
+    <asp:ContentPlaceHolder ID="Popup" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="SinAjaxDespues" runat="server">
+    <asp:ContentPlaceHolder ID="SinAjaxDespues" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content5" ContentPlaceHolderID="SinFormDespues" runat="server">
+    <asp:ContentPlaceHolder ID="SinFormDespues" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
